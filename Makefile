@@ -12,3 +12,12 @@ $(BIN)/%.o: $(SRC)/%.cpp
 	$(MKDIR) $(@D)
 	$(CPP) $(CARGS) -c $< -o $@
 
+$(BIN)/test/InstanceTest: $(BIN)/instance/Instance.o \
+                          $(BIN)/test/InstanceTest.o
+	$(MKDIR) $(@D)
+	$(CPP) -o $@ $^ $(CARGS)
+
+InstanceTest: $(BIN)/test/InstanceTest
+
+Tests: InstanceTest
+

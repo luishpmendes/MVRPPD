@@ -19,5 +19,13 @@ $(BIN)/test/InstanceTest: $(BIN)/instance/Instance.o \
 
 InstanceTest: $(BIN)/test/InstanceTest
 
-Tests: InstanceTest
+$(BIN)/test/SolutionTest: $(BIN)/instance/Instance.o \
+                          $(BIN)/solution/Solution.o \
+                          $(BIN)/test/SolutionTest.o
+	$(MKDIR) $(@D)
+	$(CPP) -o $@ $^ $(CARGS)
+
+SolutionTest: $(BIN)/test/SolutionTest
+
+Tests: InstanceTest SolutionTest
 
